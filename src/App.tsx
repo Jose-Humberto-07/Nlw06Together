@@ -1,8 +1,10 @@
-
+//import { Home } from "./pages/Home";
+import { NewRoom }from "./pages/NewRoom";
 
 function App() {
   return (
-    <h1>Hello Word</h1>
+     <NewRoom />
+     
     
   );
 }
