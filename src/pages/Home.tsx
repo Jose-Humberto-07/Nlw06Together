@@ -1,5 +1,5 @@
 
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
 import googleIconImg from '../assets/images/google-icon.svg';
@@ -17,7 +17,7 @@ import '../styles/auth.scss';
 
 
 export function Home() {
-    const history = useNavigate();
+    const history = useHistory();
     const { user, signInWithGoogle } = useAuth();
     const [roomCode, setRoomCode] = useState('');
     
@@ -28,7 +28,7 @@ export function Home() {
             await signInWithGoogle();
         }
 
-        history('/rooms/new');
+        history.push('/rooms/new');
         
     }
     // verificar se sala existe
@@ -46,7 +46,7 @@ export function Home() {
             return;
         }
 
-        history(`/rooms/${roomCode}`);
+        history.push(`/rooms/${roomCode}`);
     }
 
 
