@@ -20,42 +20,13 @@ type RoomParams = {
 
 
 export function AdminRoom() {
-    const { user } = useAuth();
+    //const { user } = useAuth();
     const params = useParams<RoomParams>();
-    const [newQuestion, setNewQuestion] = useState('');
+    
     const roomId = params.id;
 
     const {title, questions} = useRoom(roomId);
 
-
-
-    //criar pergunta
-    async function handleSendQuestion(event: FormEvent) {
-        event.preventDefault();
-
-        if (newQuestion.trim() === '') {
-            return;
-        }
-
-        if (!user) {
-            throw new Error('You must be logged in');
-        }
-
-        const question = {
-            content: newQuestion,
-            author: {
-                name: user.name,
-                avatar: user.avatar
-            },
-            isHighlighted: false,
-            isAnswerwd: false
-        };
-
-        await database.ref(`rooms/${roomId}/questions`).push(question);
-
-        setNewQuestion('');
-
-    }
 
 
     return (
